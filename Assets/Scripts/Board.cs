@@ -14,6 +14,9 @@ public class Board : MonoBehaviour
 
     public GameObject[,] AllDots { get; private set; }
 
+    public int Width { get { return _width; } set { _width = value; } }
+    public int Height { get { return _height; } set { _height = value; } }
+
     // Start is called before the first frame update
     void Start()
     {

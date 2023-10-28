@@ -15,12 +15,7 @@ public class BackgroundTile : MonoBehaviour
         
     }
 
-    private void Initialize()
-    {
-        int dotToUse = Random.Range(0, _dots.Length);
+    private void Initialize() { 
 
-        GameObject dot = Instantiate(_dots[dotToUse], transform.position, Quaternion.identity);
-        dot.transform.parent = this.transform;
-        dot.name = this.gameObject.name;
     }
 }
