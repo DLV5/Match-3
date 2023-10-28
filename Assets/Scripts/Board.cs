@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour
@@ -25,8 +23,13 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < _height; j++)
             {
-                Vector2 tempPosition = new Vector2(i, j);
-                Instantiate(_tilePrefab, tempPosition, Quaternion.identity);
+                float tempX = this.transform.position.x + i;
+                float tempY = this.transform.position.y + j;
+
+                Vector2 tempPosition = new Vector2(tempX, tempY);
+                GameObject backgroundTile = Instantiate(_tilePrefab, tempPosition, Quaternion.identity) as GameObject;
+                backgroundTile.transform.parent = this.transform;
+                backgroundTile.name = $"({i}, {j})";
             }
         }
     }
