@@ -23,8 +23,8 @@ public class Dot : MonoBehaviour
     void Start()
     {
         _board = FindObjectOfType<Board>();
-        _targetX = (int) transform.position.x;
-        _targetY = (int) transform.position.y;
+        _targetX = (int) transform.localPosition.x;
+        _targetY = (int) transform.localPosition.y;
         Row = _targetY;
         Column = _targetX;
     }
@@ -37,27 +37,27 @@ public class Dot : MonoBehaviour
         if(Mathf.Abs(_targetX - transform.position.x) > .1f)
         {
             //Move towards the target
-            _tempPosition = new Vector2(_targetX, transform.position.y);
-            transform.position = Vector2.Lerp(transform.position, _tempPosition, .4f);
+            _tempPosition = new Vector2(_targetX, transform.localPosition.y);
+            transform.localPosition = Vector2.Lerp(transform.localPosition, _tempPosition, .4f);
         } else
         {
             //Directly set the position
-            _tempPosition = new Vector2(_targetX, transform.position.y);
-            transform.position = _tempPosition;
+            _tempPosition = new Vector2(_targetX, transform.localPosition.y);
+            transform.localPosition = _tempPosition;
             _board.AllDots[Column, Row] = this.gameObject;
         }
 
-        if (Mathf.Abs(_targetY - transform.position.y) > .1f)
+        if (Mathf.Abs(_targetY - transform.localPosition.y) > .1f)
         {
             //Move towards the target
-            _tempPosition = new Vector2(transform.position.x, _targetY);
-            transform.position = Vector2.Lerp(transform.position, _tempPosition, .4f);
+            _tempPosition = new Vector2(transform.localPosition.x, _targetY);
+            transform.localPosition = Vector2.Lerp(transform.localPosition, _tempPosition, .4f);
         }
         else
         {
             //Directly set the position
-            _tempPosition = new Vector2(transform.position.x, _targetY);
-            transform.position = _tempPosition;
+            _tempPosition = new Vector2(transform.localPosition.x, _targetY);
+            transform.localPosition = _tempPosition;
             _board.AllDots[Column, Row] = this.gameObject;
         }
     }
